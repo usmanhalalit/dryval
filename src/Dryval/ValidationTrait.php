@@ -37,6 +37,8 @@ trait ValidationTrait {
 
     /**
      * Enable using placeholders instead of id integers
+     * Credit goes to https://github.com/betawax/role-model
+     * License: MIT
      *
      * @param array $rules
      * @return array
