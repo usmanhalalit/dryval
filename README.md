@@ -28,7 +28,25 @@ class Campaign extends Eloquent {
 ```
 
 Now every time a validation rule breaks a `Dryval\ValidationException` will be thrown.
-To catch this put the code below in your `app/start/global.php` :
+
+To catch this put the code below in `render()` method of your `app/Exceptions/Handler.php`.
+It will look like this:
+
+### Laravel 5
+```PHP
+public function render($request, Exception $e)
+{
+    try {
+        return \Redirect::back()->with('error', $e->getMessages()->first())->withInput(\Input::except('password'));
+    } catch (Exception $exception) {
+        // Fallback if referer doesn't exist
+        return \Redirect::to('/')->with('error', $e->getMessages()->first())->withInput(\Input::except('password'));
+    }
+}
+```
+
+### Laravel 4
+Put the code below in your `app/start/global.php` :
 
 ```PHP
 App::error(function(\Dryval\ValidationException $e)
@@ -36,6 +54,7 @@ App::error(function(\Dryval\ValidationException $e)
     try {
         return \Redirect::back()->with('error', $e->getMessages()->first())->withInput(\Input::except('password'));
     } catch (Exception $exception) {
+        // Fallback if referer doesn't exist
         return \Redirect::to('/')->with('error', $e->getMessages()->first())->withInput(\Input::except('password'));
     }
 });
@@ -89,4 +108,4 @@ You can also throw this exception anywhere you need.
 
 ___
 
-&copy; 2014 [Muhammad Usman](http://usman.it/). Licensed under MIT license.
+&copy; 2015 [Muhammad Usman](http://usman.it/). Licensed under MIT license.

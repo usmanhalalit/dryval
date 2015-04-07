@@ -2,7 +2,7 @@
 	"name": "usmanhalalit/dryval",
 	"description": "Simplify validation in Laravel.",
 	"homepage": "https://github.com/usmanhalalit/dryval",
-	"keywords": ["laravel", "validation", "trait"],
+	"keywords": ["laravel", "self-validating", "validation", "model", "exception"],
 	"license": "MIT",
 	"minimum-stability": "dev",
 	"authors":
@@ -16,8 +16,8 @@
 
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.*",
-        "illuminate/validation": "4.*"
+        "illuminate/support": ">=4.0",
+        "illuminate/validation": ">=4.0"
     },
 
 	"autoload":	{
