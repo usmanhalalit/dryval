@@ -29,10 +29,11 @@ class Campaign extends Eloquent {
 
 Now every time a validation rule breaks a `Dryval\ValidationException` will be thrown.
 
+### Laravel 5
 To catch this put the code below in `render()` method of your `app/Exceptions/Handler.php`.
 It will look like this:
 
-### Laravel 5
+
 ```PHP
 public function render($request, Exception $e)
 {
