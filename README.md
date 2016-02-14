@@ -20,7 +20,7 @@ class Campaign extends Eloquent {
     use ValidationTrait;
 
     protected static $rules = [
-        'title' => 'required|min:5|max:50', // `title` is the filed in your table
+        'title' => 'required|min:5|max:50', // `title` is the field in your table
         'description' => 'required|min:5|max:500',
     ];
 
